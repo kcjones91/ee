@@ -173,7 +173,7 @@
   }
   .lede { max-width: 620px; font-size: 17px; }
 
-  /* ---------- Principles grid ---------- */
+  /* ---------- Pillars grid ---------- */
   .grid {
     margin-top: 56px;
     display: grid;
@@ -197,6 +197,26 @@
     margin: 16px 0 10px;
   }
   .cell p { font-size: 15px; color: var(--lavender); }
+
+  /* ---------- Booking card ---------- */
+  .book-card {
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    background: var(--bg-raised);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 36px 40px;
+  }
+  .book-detail {
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--lavender);
+    margin: 6px 0;
+  }
 
   /* ---------- Practice list ---------- */
   .practices { margin-top: 48px; }
@@ -252,6 +272,7 @@
     .practice { grid-template-columns: 1fr; gap: 8px; }
     .nav-links { display: none; }
     section { padding: 80px 0; }
+    .book-card { padding: 28px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -280,6 +301,7 @@
     <div class="nav-links">
       <a href="#pillars">what we do</a>
       <a href="#approach">approach</a>
+      <a href="#book">book</a>
       <a href="#connect">connect</a>
     </div>
   </div>
@@ -376,8 +398,14 @@
     </div>
     <h2>Grab time on the calendar.</h2>
     <p class="lede">Thirty minutes, no pitch deck. Bring a problem, a goal, or just curiosity.</p>
-    <div style="margin-top: 40px; background: #FFFFFF; border-radius: 8px; border: 1px solid var(--line); overflow: hidden;">
-      <iframe src="https://calendar.app.google/3Efc4eirmKK1VFvf8" style="border: 0; display: block;" width="100%" height="620" title="Chat with us at EE"></iframe>
+
+    <div class="book-card">
+      <div>
+        <div class="book-detail">// 30 minutes</div>
+        <div class="book-detail">// Google Meet, link sent after booking</div>
+        <div class="book-detail">// no prep needed</div>
+      </div>
+      <a class="hero-cta" style="animation: none;" href="https://calendar.google.com/calendar/appointments/schedules/YOUR_ID" target="_blank" rel="noopener">book a call →</a>
     </div>
   </div>
 </section>
@@ -385,7 +413,7 @@
 <div class="closing" id="connect">
   <h2>Join the network.</h2>
   <p>Whether you need an engineering partner, want to sharpen your skills, or are looking for a community that raises the bar, EE starts with a conversation.</p>
-  <a class="hero-cta" href="mailto:hello@example.com" style="margin-top: 36px;">get in touch →</a>
+  <a class="hero-cta" href="#book" style="margin-top: 36px;">book a call →</a>
 </div>
 
 <footer>
