@@ -198,7 +198,7 @@
   }
   .cell p { font-size: 15px; color: var(--lavender); }
 
-  /* ---------- Booking card ---------- */
+  /* ---------- Booking cards ---------- */
   .book-card {
     margin-top: 44px;
     display: flex;
@@ -216,6 +216,25 @@
     font-size: 14px;
     color: var(--lavender);
     margin: 6px 0;
+  }
+  .book-split {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .book-split .book-card { margin-top: 0; }
+  .book-col {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .book-title {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 12px;
   }
 
   /* ---------- Practice list ---------- */
@@ -269,6 +288,7 @@
 
   @media (max-width: 820px) {
     .grid, .grid-4 { grid-template-columns: 1fr; }
+    .book-split { grid-template-columns: 1fr; }
     .practice { grid-template-columns: 1fr; gap: 8px; }
     .nav-links { display: none; }
     section { padding: 80px 0; }
@@ -397,16 +417,26 @@
       Book a call
     </div>
     <h2>Start the conversation.</h2>
-    <p class="lede">Tell us what you're working on, or skip straight to the calendar if you'd rather talk it through.</p>
+    <p class="lede">Grab a slot directly, or send some context first and we'll come prepared.</p>
 
-    <div class="book-card" style="display:block;">
-      <div class="hs-form-frame" data-region="na2"
-           data-form-id="e86624b2-fa8b-4ff6-980a-a22c2b22353b"
-           data-portal-id="247447050"
-           style="min-height:560px;"></div>
-      <div class="book-detail" style="margin-top:20px;">
-        // prefer to skip the form?
-        <a href="https://calendar.app.google/7tcLkswYG6fQ9a9z6" target="_blank" rel="noopener">book a call directly →</a>
+    <div class="book-split">
+      <div class="book-card book-col">
+        <div>
+          <h3 class="book-title">Book a call</h3>
+          <div class="book-detail">// coaching or consulting</div>
+          <div class="book-detail">// 30 min on Google Meet</div>
+          <div class="book-detail">// no prep needed</div>
+        </div>
+        <a class="hero-cta" style="animation: none;" href="https://calendar.app.google/7tcLkswYG6fQ9a9z6" target="_blank" rel="noopener">grab a slot →</a>
+      </div>
+      <div class="book-card book-col">
+        <div>
+          <h3 class="book-title">Project inquiry</h3>
+          <div class="book-detail">// scoped consulting + training</div>
+          <div class="book-detail">// tell us about the work</div>
+          <div class="book-detail">// we reply within a day</div>
+        </div>
+        <a class="hero-cta" style="animation: none;" href="/contact">start an inquiry →</a>
       </div>
     </div>
   </div>
@@ -425,6 +455,5 @@
   </div>
 </footer>
 
-<script src="https://js-na2.hsforms.net/forms/embed/247447050.js" defer></script>
 </body>
 </html>
