@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — EE</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0E0B16;
+    --purple: #7B42BC;
+    --violet: #A067DA;
+    --lavender: #C9BFDD;
+    --white: #FFFFFF;
+    --line: rgba(160, 103, 218, 0.18);
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--lavender);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 0%, transparent 72%);
+    pointer-events: none;
+  }
+  .code {
+    font-family: 'Sora', sans-serif;
+    font-weight: 800;
+    font-size: clamp(80px, 16vw, 150px);
+    line-height: 0.95;
+    color: var(--white);
+    text-shadow: 0 0 60px rgba(123, 66, 188, 0.45);
+    position: relative;
+  }
+  svg.tri { width: clamp(90px, 14vw, 150px); margin-top: 8px; position: relative; }
+  .msg {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-top: 36px;
+    position: relative;
+  }
+  p.sub { max-width: 420px; margin-top: 14px; font-size: 16px; position: relative; }
+  a.home {
+    margin-top: 36px;
+    display: inline-block;
+    font-family: var(--mono); font-size: 14px;
+    color: var(--white);
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--purple), #5B2E96);
+    border: 1px solid rgba(160, 103, 218, 0.5);
+    padding: 13px 30px;
+    border-radius: 4px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  a.home:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(123, 66, 188, 0.4); }
+</style>
+</head>
+<body>
+  <div class="code">404</div>
+  <svg class="tri" viewBox="0 0 200 96" aria-hidden="true">
+    <defs>
+      <linearGradient id="triGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#A067DA" stop-opacity="0.95"/>
+        <stop offset="55%" stop-color="#7B42BC" stop-opacity="0.45"/>
+        <stop offset="100%" stop-color="#7B42BC" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <polygon points="10,4 190,4 100,92" fill="url(#triGrad)"/>
+  </svg>
+  <div class="msg">Page not found</div>
+  <p class="sub">This route doesn't exist. Whatever you were looking for, the build starts back at home.</p>
+  <a class="home" href="/">back to EE →</a>
+</body>
+</html>
