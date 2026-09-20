@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project Inquiry — EE</title>
+<title>Start a Conversation — Engineering Excellence</title>
 <meta name="description" content="Tell us what's happening with your infrastructure, automation, or platform. Engineering Excellence starts with a conversation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
   a { color: var(--violet); text-decoration: none; }
   a:focus-visible, button:focus-visible {
     outline: 2px solid var(--violet);
-    outline-offset: 2px;
+    outline-offset: 3px;
     border-radius: 2px;
   }
 
@@ -68,9 +68,10 @@
   }
   .nav-links a:hover { color: var(--white); }
 
-  /* ---------- Section scaffolding ---------- */
-  section { padding: 160px 0 110px; }
-  #credentials { padding-top: 110px; border-top: 1px solid var(--line); }
+  /* ---------- Page scaffolding ---------- */
+  main { padding-top: 64px; }
+  section { padding: 110px 0; border-top: 1px solid var(--line); }
+  main > section:first-child { border-top: none; }
 
   .sec-label {
     display: flex; align-items: center; gap: 12px;
@@ -95,18 +96,17 @@
 
   /* ---------- Form card ---------- */
   .form-card {
-    margin-top: 48px;
-    max-width: 720px;
+    margin-top: 44px;
     background: var(--bg-raised);
     border: 1px solid var(--line);
     border-radius: 8px;
-    padding: 32px;
+    padding: 36px 40px;
   }
   .skip-line {
-    margin-top: 28px;
+    margin-top: 18px;
     font-family: var(--mono);
     font-size: 13px;
-    color: rgba(201, 191, 221, 0.65);
+    color: var(--lavender);
   }
 
   /* ---------- Credentials ---------- */
@@ -161,11 +161,10 @@
   }
 
   @media (max-width: 820px) {
-    .nav-links { display: none; }
-    section { padding: 130px 0 80px; }
-    #credentials { padding-top: 80px; }
-    .form-card { padding: 24px 18px; }
     .practice { grid-template-columns: 1fr; gap: 8px; }
+    .nav-links { display: none; }
+    section { padding: 80px 0; }
+    .form-card { padding: 28px 24px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -196,12 +195,14 @@
     <div class="nav-links">
       <a href="/#pillars">what we do</a>
       <a href="/#approach">approach</a>
-      <a href="#credentials">credentials</a>
       <a href="/#book">book</a>
       <a href="/#connect">connect</a>
+      <a href="#credentials">credentials</a>
     </div>
   </div>
 </nav>
+
+<main>
 
 <section id="inquiry">
   <div class="wrap">
@@ -259,6 +260,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap footer-inner">
