@@ -32,7 +32,7 @@ VIEWPORTS = {"phone": (390, 844), "desktop": (1440, 900)}
 ROUTES = {
     "/": (False, "Engineering Excellence"),
     "/contact": (True, "Project Inquiry"),
-    "/credentials": (True, "Working With"),
+    "/credentials": (False, "Working With"),
     "/threat-watch/interest": (True, "Threat Watch interest"),
     "/threat-watch/interest?interest=windows": (True, "Windows Server"),
     "/does-not-exist": (False, "404"),
