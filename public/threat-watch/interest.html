@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threat Watch interest — EE</title>
+<title>Threat Watch interest · EE</title>
 <meta name="description" content="Tell us what Threat Watch should cover next. One email if and when it goes live, nothing else.">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Engineering Excellence">
-<meta property="og:title" content="Threat Watch interest — EE">
+<meta property="og:title" content="Threat Watch interest · EE">
 <meta property="og:description" content="Tell us what Threat Watch should cover next. One email if and when it goes live, nothing else.">
 <meta property="og:url" content="https://engexcellence.co/threat-watch/interest">
 <meta property="og:image" content="https://engexcellence.co/og-card.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Threat Watch interest — EE">
+<meta name="twitter:title" content="Threat Watch interest · EE">
 <meta name="twitter:description" content="Tell us what Threat Watch should cover next. One email if and when it goes live, nothing else.">
 <meta name="twitter:image" content="https://engexcellence.co/og-card.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -173,6 +173,7 @@
       <a href="/#book">book</a>
       <a href="/#connect">connect</a>
       <a href="/credentials">credentials</a>
+      <a href="https://threats.engexcellence.co">threat watch</a>
     </div>
   </div>
 </nav>
@@ -187,10 +188,8 @@
     <p class="lede" id="int-lede"><a href="https://threats.engexcellence.co/">Threat Watch</a> only publishes what we follow closely enough to call a quiet day with confidence. Leave your email and we'll count the hands.</p>
 
     <div class="form-card">
-      <div class="hs-form-frame" data-region="na2"
-           data-form-id="39287be1-b479-4b36-85a9-461b34eb011f"
-           data-portal-id="247447050"
-           style="min-height:220px;"></div>
+      <!-- "Threat Watch Interest" is a legacy-editor form: it needs the v2 embed, not hs-form-frame -->
+      <div id="tw-interest-form" style="min-height:220px;"></div>
       <p class="promise" id="int-promise">// one email if and when it goes live. nothing else.</p>
     </div>
     <p class="skip-line">// back to <a href="https://threats.engexcellence.co/">threats.engexcellence.co →</a> · <a href="/contact">project inquiry →</a></p>
@@ -204,11 +203,25 @@
   </div>
 </footer>
 
-<script src="https://js-na2.hsforms.net/forms/embed/247447050.js" defer></script>
+<script charset="utf-8" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
 <script>
-  // Copy follows the ?interest= value the Threat Watch page sends. HubSpot fills the
-  // hidden "interest" field from the same query parameter, so nothing else is needed here.
+  // Copy follows the ?interest= value the Threat Watch page sends. HubSpot prefills the hidden
+  // "interest" field from the same query parameter; onFormReady sets it again in case prefill is off.
   (function () {
+    var interest = (new URLSearchParams(location.search).get('interest') || '').toLowerCase();
+    if (window.hbspt) {
+      hbspt.forms.create({
+        region: "na2",
+        portalId: "247447050",
+        formId: "39287be1-b479-4b36-85a9-461b34eb011f",
+        target: "#tw-interest-form",
+        onFormReady: function (form) {
+          var el = form && form.get ? form.get(0) : form;   // jQuery wrapper or plain element
+          var hidden = el && el.querySelector && el.querySelector('input[name="interest"]');
+          if (hidden && interest) hidden.value = interest;
+        }
+      });
+    }
     var copy = {
       windows: ["Windows Server isn't covered yet. Want it?",
                 "Threat Watch tracks Linux server stacks today. If Windows Server coverage would change whether you use it, say so here. Enough hands up and we build it, with the same rules and ladders.",
@@ -217,13 +230,12 @@
                 "The week's critical threats across the stacks Threat Watch covers. One email, Monday mornings.",
                 "// one email a week. unsubscribe in one click."]
     };
-    var v = (new URLSearchParams(location.search).get('interest') || '').toLowerCase();
-    var c = copy[v];
+    var c = copy[interest];
     if (!c) return;
     document.getElementById('int-title').textContent = c[0];
     document.getElementById('int-lede').textContent = c[1];
     document.getElementById('int-promise').textContent = c[2];
-    document.title = c[0] + ' — EE';
+    document.title = c[0] + ' · EE';
   })();
 </script>
 </body>

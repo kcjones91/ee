@@ -1,0 +1,43 @@
+name: check
+
+# Cloudflare Workers Builds deploys main on every push regardless of this workflow.
+# These jobs run beside that deploy: `check` is the gate to put behind branch protection,
+# `ui-smoke` is advisory (needs hsforms.net and Google Fonts, so it can be red for reasons
+# that are not page bugs). Read both.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python scripts/site_check.py --json site-check.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: site-check
+          path: site-check.json
+
+  ui-smoke:
+    runs-on: ubuntu-24.04
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install playwright
+      - run: playwright install --with-deps chromium
+      - run: python scripts/ui_smoke.py --out ui-smoke
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: ui-smoke
+          path: ui-smoke/
